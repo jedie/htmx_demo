@@ -1,6 +1,6 @@
 # htmx_demo
 
-Django DEMO project for htmx live user feedback via htmx
+Django DEMO project for htmx live user feedback
 
 ```
 ~$ git clone https://github.com/jedie/htmx_demo.git
