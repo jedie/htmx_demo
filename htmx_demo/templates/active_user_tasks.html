@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<div id="active_tasks" hx-get="{% url 'active_tasks' %}"
+     hx-trigger="every {{ poll_every }} [document.visibilityState === 'visible'], visibilitychange[document.visibilityState === 'visible'] from:document"
+     hx-swap="outerHTML">
+    <ul class="messagelist">
+        {% for instance in active_tasks %}
+        <li class="{{ instance.result }}">
+            {{ instance.create_dt|time:"H:i" }} -
+            <a href="{{ instance.admin_url }}">
+                 {{ instance.message }} ({{ instance.result }})
+            </a>
+            <a class="button" hx-get="{% url 'acknowledge_tasks' instance.id %}" hx-swap="outerHTML" hx-trigger="click">
+                {% trans 'acknowledge' %}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
