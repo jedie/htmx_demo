@@ -3,8 +3,6 @@ SHELL := /bin/bash
 all: help
 
 help:
-	@echo -e '_________________________________________________________________'
-	@echo -e 'DjangoForRunners - *dev* Makefile\n'
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -]+:.*?## / {printf "\033[36m%-22s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 install-poetry:  ## install or update poetry
